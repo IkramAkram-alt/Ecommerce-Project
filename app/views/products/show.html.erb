@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+<div class= "container">
+  <div class = "row">
+    <div class = "col-lg-8 mx-md auto">
+      <p>
+        <strong>Name:</strong>
+        <%= @product.name %>
+      </p>
+
+      <p>
+        <strong>Brand:</strong>
+        <%= @product.brand %>
+      </p>
+
+      <p>
+        <strong>Price:</strong>
+        <%= @product.price %>
+      </p>
+
+      <p>
+        <strong>Serial Number:</strong>
+        <%= @product.serial_no %>
+      </p>
+      <strong>Images:</strong>
+      <%= (0...@product.images.count).each do |image|%>
+        <%= image_tag(@product.thumbnail(image)) %>
+      <%end%>
+
+
+      <%= link_to 'Back', user_products_path(@user) %>
+    </div>
+  </div>
+</div>

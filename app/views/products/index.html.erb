@@ -1,0 +1,32 @@
+<h1>Products info</h1>
+<p id="notice"><%= notice %></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Product Name</th>
+      <th>Product Model</th>
+      <th>Product Price</th>
+      <th>Product Serial Number</th>
+      <th>Product Images</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products&.each do |c| %>
+      <tr>
+        <td><%= c.user.name %></td>
+        <td><%= c.brand%></td>
+        <td><%= c.price %></td>
+        <td><%= c.serial_no%></td>
+        <td><%= image_tag(c.thumbnail(0)) %></td>
+        <td><%= link_to 'Show ', user_product_path(@user, c.id) %></td>
+        <td><%= link_to 'Edit', edit_user_product_path(@user,c.id) %></td>
+        <td><%= link_to 'Delete', [@user, c], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+
+<%=link_to "Create Product", new_user_product_path(@user) %>
